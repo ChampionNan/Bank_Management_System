@@ -108,7 +108,7 @@ export default {
         return
       }
       for (var i = 0; i < this.password.length; i++) {
-        var x = this.password.chartAt(i)
+        var x = this.password.charAt(i)
         if (!((x >= '0' && x <= '9') || (x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z'))) {
           window.alert('密码非法')
           return
@@ -124,7 +124,7 @@ export default {
             password: this.password,
             name: this.name,
             city: this.city,
-            monry: this.money,
+            money: this.money,
             tel: this.tel,
             addr: this.addr,
             name_link: this.name_link,
@@ -138,6 +138,7 @@ export default {
             emulateJSON: true
           }
         ).then(function (response) {
+          console.log(parseInt(response.body.code))
           if (parseInt(response.body.code) === 200) {
             localStorage.setItem('type', this.type)
             localStorage.setItem('username', this.username)

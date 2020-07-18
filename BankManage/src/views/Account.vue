@@ -205,7 +205,7 @@ export default {
   created () {
     this.permission = localStorage.getItem('type')
     if (this.permission !== 'EMPLOYEE' && this.permission !== 'SUB_BANK' && this.permission !== 'CUSTOMER') {
-      //  this.$router.push('/404')
+      this.$router.push('/404')
     }
     this.findList()
     this.typeSearch = 'any'

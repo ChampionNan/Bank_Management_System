@@ -62,7 +62,7 @@
     </el-row>
     <div align="center">
       <ve-pie :data="chartData" v-if="graphtype == 'pie'" width="800px"></ve-pie>
-      <ve-line :data="chartData2" :settings="charSettings" width="800px" v-else></ve-line>
+      <ve-histogram :data="chartData2" :settings="charSettings" width="800px" v-else></ve-histogram>
     </div>
   </div>
 </template>
@@ -126,7 +126,7 @@ export default {
   created () {
     this.permission = localStorage.getItem('type')
     if (this.permission !== 'SUB_BANK') {
-      //  this.push('/404')
+      this.$router.push('/404')
     }
     this.timegrain = 'month'
     this.sumtype = 'saving'

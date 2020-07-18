@@ -58,7 +58,7 @@ export default {
   created () {
     this.type = localStorage.getItem('type')
     if (this.type !== 'EMPLOYEE' && this.type !== 'SUB_BANK' && this.type !== 'CUSTOMER') {
-      //  this.$router.push('/404')
+      this.$router.push('/404')
     }
     switch (this.type) {
       case 'SUB_BANK':

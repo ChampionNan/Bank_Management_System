@@ -102,6 +102,10 @@
         <elx-editable-column label="操作" width="160">
           <template v-slot="newscope">
             <template v-if="$refs.elxEditable2.hasActiveRow(newscope.row)">
+              <el-button size="small" type="primary" @click="saveRowEvent('elxEditable2', newscope.row)">保存</el-button>
+              <el-button size="small" type="danger" @click="cancelRowEvent('elxEditable2', newscope.row)">取消</el-button>
+            </template>
+            <template v-else>
               <el-button size="small" type="primary" @click="openActiveRowEvent('elxEditable2', newscope.row)">编辑</el-button>
               <el-button size="small" type="danger" @click="removeEvent('elxEditable2', newscope.row)">删除</el-button>
             </template>
@@ -146,7 +150,7 @@ export default {
   created () {
     this.permission = localStorage.getItem('type')
     if (this.permission !== 'SUB_BANK' && this.permission !== 'CUSTOMER') {
-      //  this.$router.push('/404')
+      this.$router.push('/404')
     }
     this.findList()
   },
@@ -378,7 +382,7 @@ export default {
         case 'elxEditable2':
           this.userLoading = true
           this.$http.post(
-            'http://' + document.doamin + ':5000/staffCustomer',
+            'http://' + document.domain + ':5000/staffCustomer',
             {
               type: 'Delete',
               custid: row.id,
@@ -458,7 +462,7 @@ export default {
                   type: 'Update',
                   custID: row.id,
                   staffID: row.staffid,
-                  servicetype: row.type,
+                  serviceType: row.type,
                   old_custID: row.id,
                   old_staffID: this.primary
                 },

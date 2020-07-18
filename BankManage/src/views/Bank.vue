@@ -84,7 +84,7 @@ export default {
   created () {
     this.permission = localStorage.getItem('type')
     if (this.permission !== 'SUB_BANK') {
-      //  this.$router.push('/404')
+      this.$router.push('/404')
     }
     this.findList()
   },

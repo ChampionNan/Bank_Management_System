@@ -267,16 +267,32 @@ def staffCustomer():
         return response
     if rstype == 'Update':
         print('Update')
+        print("ok11")
         db = pymysql.connect('127.0.0.1', 'root', 'Cbn111156789!', "Lab3", 3306)
         cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
-        custID = request.form['custID'].rstrip().replace('\'','').replace('\"','').replace('%','').replace('#','').replace(',','').replace(')','').replace('(','').replace('}','').replace('[','').replace(']','').replace('{','')
-        staffID = request.form['staffID'].rstrip().replace('\'','').replace('\"','').replace('%','').replace('#','').replace(',','').replace(')','').replace('(','').replace('}','').replace('[','').replace(']','').replace('{','')
-        serviceType = request.form['serviceType'].rstrip().replace('\'','').replace('\"','').replace('%','').replace('#','').replace(',','').replace(')','').replace('(','').replace('}','').replace('[','').replace(']','').replace('{','')
-        old_custID = request.form['old_custID'].rstrip().replace('\'','').replace('\"','').replace('%','').replace('#','').replace(',','').replace(')','').replace('(','').replace('}','').replace('[','').replace(']','').replace('{','')
-        old_staffID = request.form['old_staffID'].rstrip().replace('\'','').replace('\"','').replace('%','').replace('#','').replace(',','').replace(')','').replace('(','').replace('}','').replace('[','').replace(']','').replace('{','')
+        print("ok12")
+        custID      = request.form['custID']
+        print("ok13")
+        custID      = custID.rstrip().replace('\'','').replace('\"','').replace('%','').replace('#','').replace(',','').replace(')','').replace('(','').replace('}','').replace('[','').replace(']','').replace('{','')
+        print("ok14")
+        staffID     = request.form['staffID']
+        print("ok15")
+        staffID     = staffID.rstrip().replace('\'','').replace('\"','').replace('%','').replace('#','').replace(',','').replace(')','').replace('(','').replace('}','').replace('[','').replace(']','').replace('{','')
+        print("ok16")
+        serviceType = request.form['serviceType']
+        print("ok17")
+        serviceType = serviceType.rstrip().replace('\'','').replace('\"','').replace('%','').replace('#','').replace(',','').replace(')','').replace('(','').replace('}','').replace('[','').replace(']','').replace('{','')
+        print("ok18")
+        old_custID  = request.form['old_custID']
+        print("ok19")
+        old_custID  = old_custID.rstrip().replace('\'','').replace('\"','').replace('%','').replace('#','').replace(',','').replace(')','').replace('(','').replace('}','').replace('[','').replace(']','').replace('{','')
+        print("ok20")
+        old_staffID = request.form['old_staffID']
+        print("ok21")
+        old_staffID = old_staffID.rstrip().replace('\'','').replace('\"','').replace('%','').replace('#','').replace(',','').replace(')','').replace('(','').replace('}','').replace('[','').replace(']','').replace('{','')
 
         sqlcommand = ""
-
+        print("ok1")
         if len(old_custID) > 0 and len(old_staffID) > 0:
             print('改')
             sqlcommand = sqlcommand + "UPDATE EMPLOYEE_CUSTOMER SET"
@@ -294,6 +310,7 @@ def staffCustomer():
         else:
             insert = "('" + custID + "','" + staffID + "','" + serviceType + "')"
             sqlcommand = sqlcommand + " INSERT INTO EMPLOYEE_CUSTOMER(CUSTOMER_ID, EMPLOYEE_ID, SERVICETYPE) VALUES" + insert
+        print("ok2")
         print(sqlcommand)
 
         try:
@@ -330,7 +347,7 @@ def staffCustomer():
         custID = request.form['custid'].rstrip().replace('\'','').replace('\"','').replace('%','').replace('#','').replace(',','').replace(')','').replace('(','').replace('}','').replace('[','').replace(']','').replace('{','')
         staffID = request.form['staffid'].rstrip().replace('\'','').replace('\"','').replace('%','').replace('#','').replace(',','').replace(')','').replace('(','').replace('}','').replace('[','').replace(']','').replace('{','')
 
-        sqlcommand = "DELETE FROM EMPLOYEE_CUSTOMERN WHERE EMPLOYEE_ID = '" + staffID + "'" + "  AND CUSTOMER_ID = '" + custID + "'"
+        sqlcommand = "DELETE FROM EMPLOYEE_CUSTOMER WHERE EMPLOYEE_ID = '" + staffID + "'" + "  AND CUSTOMER_ID = '" + custID + "'"
         print(sqlcommand)
         cursor.execute(sqlcommand)
         cursor.close()

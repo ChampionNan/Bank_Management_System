@@ -188,7 +188,7 @@ def summary():
                 SELECT bank_name1 AS bank_name2, SUM(pay_money1) AS sum_pay_money2 
                 FROM(SELECT NEW_PAY.loan_id0 AS loan_id1, NEW_PAY.pay_date0 AS pay_date1, NEW_PAY.pay_money0 AS pay_money1, LOAN.BANK_NAME AS bank_name1 
                 FROM(SELECT LOAN_ID AS loan_id0, PAY_DATE AS pay_date0, PAY_MONEY AS pay_money0 FROM PAY 
-                WHERE ''' + sqlcommand_loan_term + ''')NEW_PAY, LAON 
+                WHERE ''' + sqlcommand_loan_term + ''')NEW_PAY, LOAN 
                 WHERE NEW.PAY.loan_id0 = LOAN.LOAN_ID) GROUP BY bank_name1
                 '''
                 print(sqlcommand_loan)
